@@ -1,0 +1,77 @@
+﻿
+
+<div class="header">
+    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderBefore })
+    <div class="header-upper">
+
+        @*side colapse menu start*@
+
+        @*<div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+
+            @await Component.InvokeAsync("CurrencySelector")
+            @await Component.InvokeAsync("LanguageSelector")
+            <a href="@Url.RouteUrl("ApplyVendorAccount")">@T("Vendors.ApplyAccount")</a>
+            <a href="@Url.RouteUrl("CustomerAddresses")">@T("Account.CustomerAddresses")</a>
+            <a href="@Url.RouteUrl("CustomerOrders")">@T("Account.CustomerOrders")</a>
+            <a href="@Url.RouteUrl("CustomerInfo")">@T("Account.MyAccount")</a>
+
+            <a href="@Url.RouteUrl("NewsArchive")">@T("News")</a>
+            <a href="@Url.RouteUrl("Blog")">@T("Blog")</a>
+            <a href="@Url.RouteUrl("RecentlyViewedProducts")">@T("Products.RecentlyViewedProducts")</a>
+            <a href="@Url.RouteUrl("CompareProducts")">@T("Products.Compare.List")</a>
+            <a href="@Url.RouteUrl("NewProducts")">@T("Products.NewProducts")</a>
+        </div>*@
+        @*side colapse menu end*@
+
+        <div class="header-selectors-wrapper">
+            @await Component.InvokeAsync("TaxTypeSelector")
+            @await Component.InvokeAsync("CurrencySelector")
+            @await Component.InvokeAsync("LanguageSelector")
+            @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderSelectors })
+            @*<a onclick="openNav()" style="padding-left:10px; padding-right:10px"><i class="fa fa-bars"></i></a>
+            <a onclick="enablesearch()" style="padding-right:10px"><i class="fa fa-search"></i></a>*@
+            @*<div class="search-box store-search-box" id="div_search" style="display:none">
+                @await Component.InvokeAsync("SearchBox")
+            </div>*@
+        </div>
+        <div class="header-links-wrapper">
+            @await Component.InvokeAsync("HeaderLinks")
+            @await Component.InvokeAsync("FlyoutShoppingCart")
+        </div>
+    </div>
+    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderMiddle })
+<div class="header-lower">
+    <div class="header-logo">
+        @await Component.InvokeAsync("Logo")
+    </div>
+
+    <div class="search-box store-search-box" id="div_search" >
+        @await Component.InvokeAsync("SearchBox")
+    </div>
+
+</div>
+    
+    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderAfter })
+</div>
+
+<script>
+    //function enablesearch() {
+    //    var x = document.getElementById("div_search");
+    //    if (x.style.display === "none") {
+    //        x.style.display = "inline";
+    //    } else {
+    //        x.style.display = "none";
+    //    }
+    //}
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+    }
+</script>

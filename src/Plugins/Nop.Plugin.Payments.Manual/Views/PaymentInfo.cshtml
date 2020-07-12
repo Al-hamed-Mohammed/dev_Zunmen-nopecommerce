@@ -1,0 +1,86 @@
+﻿@{
+    Layout = "";
+}
+@model Nop.Plugin.Payments.Manual.Models.PaymentInfoModel
+
+<div class="card-holder">
+    <div class="atmcard">
+        <span class="atmtitle">Card Name</span>
+        <br>
+        <span class="emboss number" id="spanno"></span><br>
+        <span class="small-type">Valid Till</span><br>
+        <span class="emboss exp" id="spandate"></span><br><br>
+        <span class="emboss cardname" id="spanname"></span>
+    </div>
+</div>
+<table width="100%" cellspacing="2" cellpadding="1" border="0">
+
+
+
+    @*<tr>
+            <td>
+                <label asp-for="CreditCardTypes">@T("Payment.SelectCreditCard"):</label>
+            </td>
+            <td>
+                <select asp-for="CreditCardType" asp-items="Model.CreditCardTypes" class="dropdownlists"></select>
+            </td>
+        </tr>*@
+    <tr>
+        <td>
+            <label asp-for="CardholderName">@T("Payment.CardholderName"):</label>
+        </td>
+        <td>
+            <input type="text" asp-for="CardholderName" id="txtcardname" style="width:165px; background-color:#f8f8f8;" autocomplete="off" onchange="fillname(this)"  />
+            <span asp-validation-for="CardholderName"></span>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label asp-for="CardNumber">@T("Payment.CardNumber"):</label>
+        </td>
+        <td>
+            <input type="text" id="txtcardno" asp-for="CardNumber" style="width:165px; background-color:#f8f8f8;" autocomplete="off" maxlength="22" onchange="fillno(this)"/>
+            <span asp-validation-for="CardNumber"></span>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label asp-for="ExpireMonth">@T("Payment.ExpirationDate"):</label>
+        </td>
+        <td>
+            <select id="ddlexpmonth" asp-for="ExpireMonth" asp-items="Model.ExpireMonths" style="background-color:#f8f8f8;"></select>
+            /
+            <select id="ddlexpyear" asp-for="ExpireYear" asp-items="Model.ExpireYears" style="background-color:#f8f8f8;" onchange="filldate()"></select>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label asp-for="CardCode">@T("Payment.CardCode"):</label>
+        </td>
+        <td>
+            <input type="text" asp-for="CardCode" style="width:60px; background-color:#f8f8f8;" autocomplete="off" maxlength="4" />
+            <span asp-validation-for="CardCode"></span>
+        </td>
+    </tr>
+</table>
+<script type="text/javascript">
+    function fillname(textBox) {
+      //  alert(textBox.value)
+        document.getElementById("spanname").innerHTML = textBox.value;
+    }
+    function fillno(textBox) {
+      //  alert(textBox.value)
+        document.getElementById("spanno").innerHTML = textBox.value;
+    }
+    function filldate() {
+        var month = document.getElementById("ddlexpmonth");
+        var sm = month.options[month.selectedIndex].value;
+
+        var year = document.getElementById("ddlexpyear");
+        var sy = year.options[year.selectedIndex].value;
+
+      //  alert(sm + '/' + sy);
+
+        document.getElementById("spandate").innerHTML = sm +'/'+  sy;
+    }
+</script>

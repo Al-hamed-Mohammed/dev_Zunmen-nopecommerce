@@ -1,0 +1,76 @@
+﻿@{
+    Layout = "";
+}
+
+@model Nop.Plugin.Payments.BrainTree.Models.PaymentInfoModel
+
+    <div class="card-holder">
+        <div class="atmcard">
+            <span class="atmtitle">Card Name</span>
+            <br>
+            <span class="emboss number" id="spanno"></span><br>
+            <span class="small-type">Valid Till</span><br>
+            <span class="emboss exp" id="spandate"></span><br><br>
+            <span class="emboss cardname" id="spanname"></span>
+        </div>
+    </div>
+
+<table width="100%" cellspacing="2" cellpadding="1" border="0">
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.CardholderName, false):
+        </td>
+        <td>
+            @Html.TextBoxFor(model => model.CardholderName, new { style = "Width: 165px; background-color:#f8f8f8;", autocomplete = "off", id= "txtcardname", onchange = "fillname(this)" })
+            @Html.ValidationMessageFor(model => model.CardholderName)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.CardNumber, false):
+        </td>
+        <td>
+            @Html.TextBoxFor(model => model.CardNumber, new { style = "Width: 165px; background-color:#f8f8f8;", autocomplete = "off", maxlength = 22, id = "txtcardno", onchange = "fillno(this)" })
+            @Html.ValidationMessageFor(model => model.CardNumber)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.ExpireMonth, false):
+        </td>
+        <td>
+            @Html.DropDownListFor(model => model.ExpireMonth, Model.ExpireMonths, new{ style = "background-color:#f8f8f8;", id = "ddlexpmonth" } )
+            /
+            @Html.DropDownListFor(model => model.ExpireYear, Model.ExpireYears, new { style = "background-color:#f8f8f8;", id = "ddlexpyear", onchange = "filldate()" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.CardCode, false):
+        </td>
+        <td>
+            @Html.TextBoxFor(model => model.CardCode, new { style = "Width: 60px; background-color:#f8f8f8;", autocomplete = "off", maxlength = 4 })
+            @Html.ValidationMessageFor(model => model.CardCode)
+        </td>
+    </tr>
+</table><script type="text/javascript">
+    function fillname(textBox) {
+       // alert(textBox.value)
+        document.getElementById("spanname").innerHTML = textBox.value;
+    }
+    function fillno(textBox) {
+      //  alert(textBox.value)
+        document.getElementById("spanno").innerHTML = textBox.value;
+    }
+    function filldate() {
+        var month = document.getElementById("ddlexpmonth");
+        var sm = month.options[month.selectedIndex].value;
+
+        var year = document.getElementById("ddlexpyear");
+        var sy = year.options[year.selectedIndex].value;
+
+      //  alert(sm + '/' + sy);
+
+        document.getElementById("spandate").innerHTML = sm +'/'+  sy;
+    }
+</script>
