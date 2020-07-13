@@ -1128,9 +1128,9 @@ label, label + * {
 	clear: both;
 }
 .search-box input.search-box-text {
-  /*outline: 0;
+  outline: 0;
   border-width: 0 0 2px;
-  border-color: blue;*/
+  border-color: blue;
   float: left;
   width: 200px;
   height: 36px;
@@ -6707,7 +6707,7 @@ pre {
 }
 .header-logo {
 	display: table-cell;
-	text-align: left;
+	text-align: center;
 	vertical-align: middle;
 	font-size: 0;
 }
