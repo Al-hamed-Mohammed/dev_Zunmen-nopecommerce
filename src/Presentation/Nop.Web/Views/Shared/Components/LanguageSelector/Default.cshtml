@@ -4,7 +4,7 @@
 
 @if (Model.AvailableLanguages.Count > 1)
 {
-    <div class="language-selector">
+    <div class="language-selector" style="display:block; padding-left:32px;">
     @{
         var returnUrl = webHelper.GetRawUrl(Context.Request);
 

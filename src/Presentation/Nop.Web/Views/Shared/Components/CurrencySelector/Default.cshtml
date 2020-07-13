@@ -4,7 +4,7 @@
 
 @if (Model.AvailableCurrencies.Count > 1)
 {
-    <div class="currency-selector">
+    <div class="currency-selector" style="display:block; padding-left:32px;">
         @{
             var returnUrl = webHelper.GetRawUrl(Context.Request);
             var currencies = Model.AvailableCurrencies.Select(x => new SelectListItem

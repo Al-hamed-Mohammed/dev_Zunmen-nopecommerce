@@ -21,7 +21,7 @@
             @Html.LabelFor(model => model.CardholderName, false):
         </td>
         <td>
-            @Html.TextBoxFor(model => model.CardholderName, new { style = "Width: 165px; background-color:#f8f8f8;", autocomplete = "off", id= "txtcardname", onchange = "fillname(this)" })
+            @Html.TextBoxFor(model => model.CardholderName, new { style = "Width: 165px; background-color:#f8f8f8;", autocomplete = "off", id= "txtcardname", onkeyup = "fillname(this)" })
             @Html.ValidationMessageFor(model => model.CardholderName)
         </td>
     </tr>
@@ -30,7 +30,7 @@
             @Html.LabelFor(model => model.CardNumber, false):
         </td>
         <td>
-            @Html.TextBoxFor(model => model.CardNumber, new { style = "Width: 165px; background-color:#f8f8f8;", autocomplete = "off", maxlength = 22, id = "txtcardno", onchange = "fillno(this)" })
+            @Html.TextBoxFor(model => model.CardNumber, new { style = "Width: 165px; background-color:#f8f8f8;", autocomplete = "off", maxlength = 22, id = "txtcardno", onkeyup = "fillno(this)" })
             @Html.ValidationMessageFor(model => model.CardNumber)
         </td>
     </tr>
